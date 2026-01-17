@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>платформа BelPASS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <style>
+        @font-face {
+            font-family: 'Nebula';
+            src: url('nebula.ttf') format('truetype');
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #020617;
+            color: #f8fafc;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        .font-nebula {
+            font-family: 'Nebula', sans-serif;
+            text-transform: uppercase;
+        }
+
+        .glass-card {
+            background: rgba(30, 41, 59, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .hero-gradient {
+            background: radial-gradient(circle at 50% 50%, #1e40af 0%, #020617 70%);
+        }
+
+        .neon-text {
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(59, 130, 246, 0.5);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+        
+        .product-card img {
+            transition: transform 0.5s ease;
+        }
+        
+        .product-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .team-avatar {
+            width: 120px;       
+            height: 120px;
+            object-fit: cover;  
+            border-radius: 50%; 
+            margin: 0 auto 1.5rem auto; 
+            border: 3px solid rgba(255, 255, 255, 0.1); 
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.3); 
+            transition: all 0.5s ease;
+        }
+
+        .glass-card:hover .team-avatar {
+            transform: scale(1.1);
+            border-color: rgba(59, 130, 246, 0.8);
+            box-shadow: 0 0 30px rgba(59, 130, 246, 0.6);
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="fixed w-full z-50 px-6 md:px-8 py-4 md:py-6 flex justify-between items-center bg-slate-950/50 backdrop-blur-md border-b border-white/5">
+        <div class="flex items-center gap-3">
+            <img src="logo.png" alt="Logo" class="h-6 md:h-8 w-auto">
+            <div class="text-xl md:text-2xl font-black tracking-tighter neon-text font-nebula text-white">BelPASS</div>
+        </div>
+        <div class="space-x-8 hidden md:block text-sm uppercase tracking-widest font-medium">
+            <a href="#about" class="hover:text-blue-400 transition">О проекте</a>
+            <a href="#structure" class="hover:text-blue-400 transition">Структура</a>
+            <a href="#team" class="hover:text-blue-400 transition">Команда</a>
+        </div>
+    </nav>
+
+    <section class="relative min-h-screen flex flex-col justify-center items-center text-center px-4 hero-gradient pt-20">
+        <div id="hero-content">
+            <h1 class="text-5xl sm:text-8xl md:text-[10rem] lg:text-[12rem] font-black mb-6 leading-none text-white font-nebula neon-text break-words">
+                BelPASS
+            </h1>
+            <p class="text-base md:text-2xl text-slate-300 max-w-3xl mx-auto mb-10 tracking-wide px-2">
+                Первая отечественная аппаратно-программная платформа для комплексной защиты информации
+            </p>
+            <a href="#structure" class="bg-blue-600 hover:bg-blue-700 px-8 py-4 md:px-12 md:py-5 rounded-full font-bold transition-all transform hover:scale-105 inline-block text-base md:text-lg">
+                Структура платформы
+            </a>
+        </div>
+    </section>
+
+    <section id="about" class="py-20 md:py-32 px-6 md:px-8 max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center">
+            <div class="reveal-left">
+                <h2 class="text-3xl md:text-4xl font-bold mb-6 md:mb-8 uppercase tracking-tight">Актуальность</h2>
+                <p class="text-slate-400 mb-6 md:mb-8 leading-relaxed text-base md:text-lg">
+                    В <span class="text-white font-bold">68% успешных кибератак</span> в Беларуси используется социальная инженерия. Платформа <span class="font-nebula text-blue-400 text-sm">BelPASS</span> призвана исключить человеческий фактор из цепочки угроз.
+                </p>
+                <div class="p-6 md:p-8 glass-card rounded-3xl border-l-4 border-blue-600">
+                    <p class="italic text-slate-200 text-sm md:text-base">"Цель — решение системной проблемы кибербезопасности в Беларуси через создание и внедрение первой отечественной аппаратно-программной платформы для комплексной защиты информации BelPASS."</p>
+                </div>
+            </div>
+            <div class="reveal-right grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div class="glass-card p-8 md:p-10 rounded-3xl text-center">
+                    <div class="text-4xl md:text-5xl font-black text-blue-500 mb-2 tracking-tighter">68%</div>
+                    <div class="text-[10px] uppercase tracking-[0.2em] text-slate-500">Атак в Республике Беларусь</div>
+                </div>
+                <div class="glass-card p-8 md:p-10 rounded-3xl text-center mt-0 sm:mt-12">
+                    <div class="text-4xl md:text-5xl font-black text-blue-500 mb-2 tracking-tighter">№1</div>
+                    <div class="text-[10px] uppercase tracking-[0.2em] text-slate-500">Разработка</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="structure" class="py-20 md:py-32 bg-slate-900/40 border-y border-white/5">
+        <div class="max-w-7xl mx-auto px-6 md:px-8">
+            <h2 class="text-center text-3xl md:text-4xl font-black mb-12 md:mb-20 uppercase tracking-tighter text-white">
+                Структура платформы
+            </h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10">
+                <a href="#detail-h2" class="product-card group block">
+                    <div class="glass-card p-3 rounded-[2.5rem] overflow-hidden">
+                        <div class="overflow-hidden rounded-[2rem] mb-6 shadow-2xl">
+                            <img src="hard.png" alt="Hardware" class="w-full h-48 md:h-52 object-cover">
+                        </div>
+                        <div class="px-5 pb-6">
+                            <h3 class="text-xl md:text-2xl font-bold mb-2">BelPASS H-series</h3>
+                            <p class="text-blue-500 text-[10px] md:text-xs font-bold uppercase tracking-widest mb-4">Аппаратно-программный модуль</p>
+                            <p class="text-sm text-slate-400 leading-relaxed">Устройство для управления паролями. Содержит в себе криптографические процедуры AES-256 и SHA-128.</p>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="#detail-p1" class="product-card group block">
+                    <div class="glass-card p-3 rounded-[2.5rem] overflow-hidden">
+                        <div class="overflow-hidden rounded-[2rem] mb-6 shadow-2xl">
+                            <img src="pro.png" alt="Software" class="w-full h-48 md:h-52 object-cover">
+                        </div>
+                        <div class="px-5 pb-6">
+                            <h3 class="text-xl md:text-2xl font-bold mb-2">BelPASS P-series</h3>
+                            <p class="text-indigo-500 text-[10px] md:text-xs font-bold uppercase tracking-widest mb-4">Программный модуль</p>
+                            <p class="text-sm text-slate-400 leading-relaxed">Приложение для управления паролями. Предназначено для конфиденциального хранения учетных записей.</p>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="#detail-edu" class="product-card group block">
+                    <div class="glass-card p-3 rounded-[2.5rem] overflow-hidden">
+                        <div class="overflow-hidden rounded-[2rem] mb-6 shadow-2xl">
+                            <img src="edu.png" alt="Game" class="w-full h-48 md:h-52 object-cover">
+                        </div>
+                        <div class="px-5 pb-6">
+                            <h3 class="text-xl md:text-2xl font-bold mb-2">Edu Game</h3>
+                            <p class="text-cyan-500 text-[10px] md:text-xs font-bold uppercase tracking-widest mb-4">Обучающая игра</p>
+                            <p class="text-sm text-slate-400 leading-relaxed">Обучающая игра для формирования базовых навыков по защите от угроз информационной безопасности</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="team" class="py-20 md:py-32 bg-slate-950">
+        <div class="max-w-7xl mx-auto px-6 md:px-8 text-center">
+            <h2 class="text-3xl md:text-4xl font-black mb-12 md:mb-16 uppercase tracking-widest">Команда проекта</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                
+                <div class="glass-card p-6 md:p-10 rounded-[3rem] group hover:border-blue-500/50 transition-colors">
+                    <img src="a1.png" alt="Клиндухов Ярослав" class="team-avatar">
+                    <p class="text-lg md:text-xl font-bold text-white mb-2">Клиндухов Ярослав Алексеевич</p>
+                    <p class="text-blue-500 text-[10px] uppercase tracking-[0.2em] font-bold mb-3">Автор</p>
+                    <p class="text-slate-500 text-xs md:text-sm">УО «Могилевский государственный лицей №1»</p>
+                </div>
+
+                <div class="glass-card p-6 md:p-10 rounded-[3rem] group hover:border-blue-500/50 transition-colors">
+                    <img src="a2.png" alt="Павловский Тимофей" class="team-avatar">
+                    <p class="text-lg md:text-xl font-bold text-white mb-2">Павловский Тимофей Евгеньевич</p>
+                    <p class="text-blue-500 text-[10px] uppercase tracking-[0.2em] font-bold mb-3">Автор</p>
+                    <p class="text-slate-500 text-xs md:text-sm">ГУО «Средняя школа № 17 г. Лиды» </p>
+                </div>
+
+                <div class="glass-card p-6 md:p-10 rounded-[3rem] group hover:border-indigo-500/50 transition-colors">
+                    <img src="a3.png" alt="Бойправ О. В." class="team-avatar">
+                    <p class="text-lg md:text-xl font-bold text-white mb-2">Бойправ Ольга Владимировна</p>
+                    <p class="text-indigo-400 text-[10px] uppercase tracking-[0.2em] font-bold mb-3">Научный руководитель</p>
+                    <p class="text-slate-500 text-xs md:text-sm">к.т.н., заведующий кафедрой защиты информации БГУИР</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-12 border-t border-white/5 text-center text-slate-600 text-[10px] md:text-xs tracking-[0.4em]">
+        <p>&copy; 2026 <span class="font-nebula">BelPASS</span> PROJECT FOR 100 IDEAS</p>
+    </footer>
+
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+
+        gsap.from("#hero-content > *", {
+            y: 40, opacity: 0, duration: 1.5, stagger: 0.3, ease: "expo.out"
+        });
+
+        gsap.from(".product-card", {
+            scrollTrigger: { trigger: "#structure", start: "top 80%" }, /* start tuned for mobile */
+            y: 80, opacity: 0, duration: 1, stagger: 0.2, ease: "power4.out"
+        });
+
+        gsap.from("#team .glass-card", {
+            scrollTrigger: { trigger: "#team", start: "top 80%" }, /* start tuned for mobile */
+            scale: 0.8, opacity: 0, duration: 0.8, stagger: 0.15, ease: "back.out(1.7)"
+        });
+    </script>
+</body>
+</html>
